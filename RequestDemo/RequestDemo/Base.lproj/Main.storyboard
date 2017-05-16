@@ -61,13 +61,25 @@
                                             <segue destination="vj7-xL-K9x" kind="show" id="jOG-Qa-dFh"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Uw9-Cj-ZSt">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="lrN-5i-Y3V" style="IBUITableViewCellStyleDefault" id="Uw9-Cj-ZSt">
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uw9-Cj-ZSt" id="VZu-Oo-GCA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lrN-5i-Y3V">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="xeH-Ut-UrQ" kind="show" id="unO-nE-oLt"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -133,7 +145,64 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Oe-wx-agN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1689" y="-143"/>
+            <point key="canvasLocation" x="1954" y="-388"/>
+        </scene>
+        <!--Tags View Controller-->
+        <scene sceneID="EAo-wt-dCR">
+            <objects>
+                <viewController id="xeH-Ut-UrQ" customClass="TagsViewController" customModule="RequestDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kc9-sA-yo7"/>
+                        <viewControllerLayoutGuide type="bottom" id="adp-lh-Ebi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BYo-3k-DMw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ef0-DV-NdA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="yT6-Gr-jK6"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="xeH-Ut-UrQ" id="rqU-qC-riq"/>
+                                    <outlet property="delegate" destination="xeH-Ut-UrQ" id="ddI-OX-5KU"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fo6-NR-DVs">
+                                <rect key="frame" x="158" y="192" width="59" height="30"/>
+                                <state key="normal" title="Get tags"/>
+                                <connections>
+                                    <action selector="getTags:" destination="xeH-Ut-UrQ" eventType="touchUpInside" id="XcF-eL-e6O"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tags" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAR-5B-a4Z">
+                                <rect key="frame" x="16" y="238" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fo6-NR-DVs" firstAttribute="centerX" secondItem="BYo-3k-DMw" secondAttribute="centerX" id="9uO-DP-gQ9"/>
+                            <constraint firstAttribute="trailing" secondItem="Ef0-DV-NdA" secondAttribute="trailing" id="Gcn-Ve-tXE"/>
+                            <constraint firstItem="Ef0-DV-NdA" firstAttribute="leading" secondItem="BYo-3k-DMw" secondAttribute="leading" id="Xex-Kg-RDV"/>
+                            <constraint firstItem="gAR-5B-a4Z" firstAttribute="leading" secondItem="BYo-3k-DMw" secondAttribute="leadingMargin" id="Xv1-p3-2ll"/>
+                            <constraint firstItem="gAR-5B-a4Z" firstAttribute="top" secondItem="fo6-NR-DVs" secondAttribute="bottom" constant="16" id="Zpo-sN-xT7"/>
+                            <constraint firstItem="gAR-5B-a4Z" firstAttribute="trailing" secondItem="BYo-3k-DMw" secondAttribute="trailingMargin" id="dla-S1-Hhw"/>
+                            <constraint firstItem="fo6-NR-DVs" firstAttribute="top" secondItem="Ef0-DV-NdA" secondAttribute="bottom" constant="8" id="jLA-Jt-9OX"/>
+                            <constraint firstItem="Ef0-DV-NdA" firstAttribute="top" secondItem="kc9-sA-yo7" secondAttribute="bottom" id="rA4-tg-FcE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lbTags" destination="gAR-5B-a4Z" id="nU9-JP-XeY"/>
+                        <outlet property="pickView" destination="Ef0-DV-NdA" id="MPq-Jh-aFs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="me2-6F-n95" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1952.8" y="476.31184407796104"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="eFk-zl-iSc">
@@ -189,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KP2-6t-PdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688.8" y="578.86056971514245"/>
+            <point key="canvasLocation" x="2689" y="-11"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6lm-lR-xda">

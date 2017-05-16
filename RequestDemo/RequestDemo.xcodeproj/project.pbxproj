@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A0EC2A51ECAE8440042305F /* TagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EC2A41ECAE8440042305F /* TagsViewController.swift */; };
 		3A5855291EC9569A007F8DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5855281EC9569A007F8DA1 /* AppDelegate.swift */; };
 		3A58552E1EC9569A007F8DA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A58552C1EC9569A007F8DA1 /* Main.storyboard */; };
 		3A5855301EC9569A007F8DA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A58552F1EC9569A007F8DA1 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		156230B59D76B10A0644518F /* Pods-RequestDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-RequestDemo/Pods-RequestDemo.release.xcconfig"; sourceTree = "<group>"; };
 		1C21CE824B1BA62CCB134BEF /* Pods_RequestDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RequestDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A0EC2A41ECAE8440042305F /* TagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsViewController.swift; sourceTree = "<group>"; };
 		3A5855251EC9569A007F8DA1 /* RequestDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RequestDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A5855281EC9569A007F8DA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A58552D1EC9569A007F8DA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				3A58553C1EC957BA007F8DA1 /* other */,
 				3A58553A1EC957AE007F8DA1 /* MusicDetailViewController.swift */,
 				3AC49C4F1ECAA8BC0084987E /* SearchViewController.swift */,
+				3A0EC2A41ECAE8440042305F /* TagsViewController.swift */,
 				3A58552C1EC9569A007F8DA1 /* Main.storyboard */,
 				3AC49C491EC9615C0084987E /* MapLocalURLProtocol.swift */,
 				3AC49C4B1EC963590084987E /* ResponseMockManager.swift */,
@@ -235,6 +238,7 @@
 				3A5855291EC9569A007F8DA1 /* AppDelegate.swift in Sources */,
 				3AC49C4A1EC9615C0084987E /* MapLocalURLProtocol.swift in Sources */,
 				3A58553B1EC957AE007F8DA1 /* MusicDetailViewController.swift in Sources */,
+				3A0EC2A51ECAE8440042305F /* TagsViewController.swift in Sources */,
 				3AC49C4E1EC99CC90084987E /* ResponseMock.swift in Sources */,
 				3AC49C4C1EC963590084987E /* ResponseMockManager.swift in Sources */,
 			);

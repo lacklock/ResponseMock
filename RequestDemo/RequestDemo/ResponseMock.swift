@@ -51,17 +51,29 @@ extension ResponseMock {
               let mockURL = url else {
                 return false
         }
-        guard mockURL.host == targetURL.host else {
-            return false
-        }
-        guard method.rawValue == request.httpMethod else {
+        guard mockURL.host == targetURL.host,
+            method.rawValue == request.httpMethod else {
                 return false
         }
-        guard mockURL.pathComponents == targetURL.pathComponents else {
+        guard isPathComponentsMatch(targetURL: targetURL) else {
             return false
         }
         guard isParamtersMatch(request: request) else {
             return false
+        }
+        return true
+    }
+    
+    private func isPathComponentsMatch(targetURL: URL) -> Bool {
+        let targetPaths = targetURL.pathComponents
+        guard let mockPaths = url?.pathComponents,
+            mockPaths.count ==  targetPaths.count else {
+            return false
+        }
+        for (index,path) in mockPaths.enumerated() {
+            if path != "*" && path != targetPaths[index] {
+                return false
+            }
         }
         return true
     }
