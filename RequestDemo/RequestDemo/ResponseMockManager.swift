@@ -37,16 +37,18 @@ public class ResponseMockManager {
                     continue
                 }
                 do {
-                    let jsonDict = try JSONSerialization.jsonObject(with: configData, options: []) as? [String: Any]
-                    guard let config = jsonDict else {
+                    let jsons = try JSONSerialization.jsonObject(with: configData, options: []) as? [[String: Any]]
+                    guard let jsonDicts = jsons else {
                         continue
                     }
-                    guard checkConfigFileIsVaild(config: config) else { continue }
-                    if let mock = ResponseMock(JSON: config) {
-                        mocks.append(mock)
+                    for config in jsonDicts {
+                        guard checkConfigFileIsVaild(config: config) else { continue }
+                        if let mock = ResponseMock(JSON: config) {
+                            mocks.append(mock)
+                        }
                     }
                 } catch {
-                    assertionFailure(error.localizedDescription)
+                    print(error.localizedDescription)
                 }
             }
         } catch {
