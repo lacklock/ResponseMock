@@ -37,7 +37,7 @@ class MapLocalURLProtocol: URLProtocol {
             return
         }
         if let delay = mock.delay {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay, execute: {
+            DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + delay, execute: {
                 self.client?.urlProtocol(self, didLoad: jsonData)
                 self.client?.urlProtocolDidFinishLoading(self)
             })
