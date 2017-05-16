@@ -12,6 +12,9 @@ class MapLocalURLProtocol: URLProtocol {
 
     override class func canInit(with request: URLRequest) -> Bool {
         if request.url != nil {
+            if ResponseMockManager.loadMockFilesEachRequest {
+                ResponseMockManager.loadConfig()
+            }
             if let _ = ResponseMockManager.isMockFor(request: request){
                 return true
             }
@@ -24,9 +27,6 @@ class MapLocalURLProtocol: URLProtocol {
     }
         
     override func startLoading() {
-        guard request.url != nil else {
-            return
-        }
         guard let mock = ResponseMockManager.isMockFor(request: request) else {
             return
         }
@@ -48,7 +48,6 @@ class MapLocalURLProtocol: URLProtocol {
     }
     
     override func stopLoading() {
-        
     }
 }
 

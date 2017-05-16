@@ -11,25 +11,34 @@ import ObjectMapper
 
 public class ResponseMockManager {
     
-    public static func start(inBackground: Bool = true) {
-        URLProtocol.registerClass(MapLocalURLProtocol.self)
+    /// start mock service
+    ///
+    /// - Parameters:
+    ///   - inBackground: should load mock files asynchronous, defalut is **True** .
+    ///   - loadMockFilesEachRequest: keep mock synchronize with local config files. should load mock files before each request happen, defalut is False.
+    public static func start(inBackground: Bool = true, loadMockFilesEachRequest: Bool = false) {
+        self.loadMockFilesEachRequest = loadMockFilesEachRequest
         if inBackground {
             DispatchQueue.global(qos: .userInitiated).async {
                 loadConfig()
+                URLProtocol.registerClass(MapLocalURLProtocol.self)
             }
         }else {
             loadConfig()
+            URLProtocol.registerClass(MapLocalURLProtocol.self)
         }
     }
     
-    public static var configUpdateEachRequest = false
+    public static var loadMockFilesEachRequest = false
     
-    public static var rootPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("ResponseMock", isDirectory: true)
+    public static var rootPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("mock", isDirectory: true)
+    static var resoureDirectory = rootPath.appendingPathComponent("mock", isDirectory: true)
     
     static var mocks = [ResponseMock]()
     
     static func loadConfig(){
         do {
+            mocks.removeAll()
             let configFiles = try FileManager.default.contentsOfDirectory(at: rootPath, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
             for configFile in configFiles {
                 guard let configData = try? Data(contentsOf: configFile) else {
@@ -39,6 +48,7 @@ public class ResponseMockManager {
                 do {
                     let jsons = try JSONSerialization.jsonObject(with: configData, options: []) as? [[String: Any]]
                     guard let jsonDicts = jsons else {
+                        assertionFailure("mock json should be array, [[String: Any]]")
                         continue
                     }
                     for config in jsonDicts {
