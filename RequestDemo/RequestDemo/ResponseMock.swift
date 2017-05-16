@@ -47,11 +47,9 @@ struct ResponseMock: Mappable {
 extension ResponseMock {
     
     func isMatch(_ request: URLRequest) -> Bool {
-        guard let targetURL = request.url else {
-            return false
-        }
-        guard let mockURL = url else {
-            return false
+        guard let targetURL = request.url,
+              let mockURL = url else {
+                return false
         }
         guard mockURL.host == targetURL.host else {
             return false
@@ -61,6 +59,39 @@ extension ResponseMock {
         }
         guard mockURL.pathComponents == targetURL.pathComponents else {
             return false
+        }
+        guard isParamtersMatch(request: request) else {
+            return false
+        }
+        return true
+    }
+    
+    private func isParamtersMatch(request: URLRequest) -> Bool {
+        guard let targetURL = request.url,
+            let mockURL = url else {
+            return false
+        }
+        if mockURL.query != nil {
+            guard targetURL.query != nil else {
+                return false
+            }
+            guard let mockComponents = URLComponents(url: mockURL, resolvingAgainstBaseURL: false)?.queryItems,
+                let targetComponents = URLComponents(url: targetURL, resolvingAgainstBaseURL: false)?.queryItems else {
+                    return false
+            }
+            for mockQuery in mockComponents {
+                guard let targetQuery = targetComponents.first(where: {
+                    $0.name == mockQuery.name
+                })else {
+                    return false
+                }
+                guard mockQuery.value == targetQuery.value else {
+                    return false
+                }
+            }
+        }
+        if method != .get { // TODO:  check body parameter
+            
         }
         return true
     }
