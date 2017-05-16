@@ -25,6 +25,7 @@ struct ResponseMock: Mappable {
     var response: Any?
     var delay: Double?
     var headers: [String: Any]?
+    var method: HTTPMethod = .get
     
     init?(map: Map){
         let urlString = map.JSON["url"] as! String
@@ -39,21 +40,40 @@ struct ResponseMock: Mappable {
         response <- map["response"]
         delay <- map["delay"]
         headers <- map["headers"]
+        method <- map["method"]
     }
 }
 
 extension ResponseMock {
     
-    func isMatch(_ targetURL: URL) -> Bool {
+    func isMatch(_ request: URLRequest) -> Bool {
+        guard let targetURL = request.url else {
+            return false
+        }
         guard let mockURL = url else {
             return false
         }
         guard mockURL.host == targetURL.host else {
             return false
         }
+        guard method.rawValue == request.httpMethod else {
+                return false
+        }
         guard mockURL.pathComponents == targetURL.pathComponents else {
             return false
         }
         return true
     }
+}
+
+enum HTTPMethod: String {
+    case options = "OPTIONS"
+    case get     = "GET"
+    case head    = "HEAD"
+    case post    = "POST"
+    case put     = "PUT"
+    case patch   = "PATCH"
+    case delete  = "DELETE"
+    case trace   = "TRACE"
+    case connect = "CONNECT"
 }

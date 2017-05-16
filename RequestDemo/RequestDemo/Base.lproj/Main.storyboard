@@ -48,7 +48,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R54-f2-9fT">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R54-f2-9fT">
                                                     <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -57,6 +57,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vj7-xL-K9x" kind="show" id="jOG-Qa-dFh"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Uw9-Cj-ZSt">
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
@@ -130,7 +133,63 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Oe-wx-agN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1384.8" y="184.85757121439281"/>
+            <point key="canvasLocation" x="1689" y="-143"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="eFk-zl-iSc">
+            <objects>
+                <viewController id="vj7-xL-K9x" customClass="SearchViewController" customModule="RequestDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tqm-SN-oal"/>
+                        <viewControllerLayoutGuide type="bottom" id="5YK-6A-dmn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xVb-EF-kqE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="YUI" borderStyle="roundedRect" placeholder="keyword" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hCm-de-rE9">
+                                <rect key="frame" x="26" y="86" width="130" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="QQd-ql-exE"/>
+                                    <constraint firstAttribute="width" constant="130" id="TXq-CY-3mB"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ykf-xS-cbI">
+                                <rect key="frame" x="173" y="86" width="48" height="30"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="search:" destination="vj7-xL-K9x" eventType="touchUpInside" id="8kU-6r-QJt"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SearchResult" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LC-2F-lug">
+                                <rect key="frame" x="26" y="147" width="333" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ykf-xS-cbI" firstAttribute="leading" secondItem="hCm-de-rE9" secondAttribute="trailing" constant="17" id="3kO-wA-qIs"/>
+                            <constraint firstItem="hCm-de-rE9" firstAttribute="leading" secondItem="xVb-EF-kqE" secondAttribute="leadingMargin" constant="10" id="SzQ-Ko-gc7"/>
+                            <constraint firstItem="0LC-2F-lug" firstAttribute="leading" secondItem="xVb-EF-kqE" secondAttribute="leadingMargin" constant="10" id="XRe-Ao-3YX"/>
+                            <constraint firstItem="Ykf-xS-cbI" firstAttribute="centerY" secondItem="hCm-de-rE9" secondAttribute="centerY" id="aQU-cz-FQ3"/>
+                            <constraint firstItem="hCm-de-rE9" firstAttribute="top" secondItem="tqm-SN-oal" secondAttribute="bottom" constant="22" id="dES-x2-8FR"/>
+                            <constraint firstItem="0LC-2F-lug" firstAttribute="top" secondItem="Ykf-xS-cbI" secondAttribute="bottom" constant="31" id="fVK-p6-Yg0"/>
+                            <constraint firstItem="0LC-2F-lug" firstAttribute="trailing" secondItem="xVb-EF-kqE" secondAttribute="trailingMargin" id="uOE-nI-pFi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lbResult" destination="0LC-2F-lug" id="yql-ro-jxg"/>
+                        <outlet property="tfSearch" destination="hCm-de-rE9" id="pAr-0p-RL2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KP2-6t-PdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1688.8" y="578.86056971514245"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6lm-lR-xda">

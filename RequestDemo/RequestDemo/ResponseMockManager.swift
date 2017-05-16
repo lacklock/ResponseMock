@@ -67,7 +67,7 @@ public class ResponseMockManager {
         return true
     }
     
-    static func isMockFor(url: URL) -> ResponseMock? {
-        return mocks.first(where: { $0.isMatch(url) })
+    static func isMockFor(request: URLRequest) -> ResponseMock? {
+        return mocks.first(where: { $0.isMatch(request) })
     }
 }

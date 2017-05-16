@@ -11,8 +11,8 @@ import UIKit
 class MapLocalURLProtocol: URLProtocol {
 
     override class func canInit(with request: URLRequest) -> Bool {
-        if let url = request.url {
-            if let _ = ResponseMockManager.isMockFor(url: url){
+        if request.url != nil {
+            if let _ = ResponseMockManager.isMockFor(request: request){
                 return true
             }
         }
@@ -24,10 +24,10 @@ class MapLocalURLProtocol: URLProtocol {
     }
         
     override func startLoading() {
-        guard let url = request.url else {
+        guard request.url != nil else {
             return
         }
-        guard let mock = ResponseMockManager.isMockFor(url: url) else {
+        guard let mock = ResponseMockManager.isMockFor(request: request) else {
             return
         }
         guard let response = mock.response  else {
