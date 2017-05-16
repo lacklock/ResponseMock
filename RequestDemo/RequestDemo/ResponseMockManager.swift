@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-public struct ResponseMockManager {
+public class ResponseMockManager {
     
     public static func start(inBackground: Bool = true) {
         URLProtocol.registerClass(MapLocalURLProtocol.self)
@@ -30,19 +30,23 @@ public struct ResponseMockManager {
     
     static func loadConfig(){
         do {
-            let configFiles = try FileManager.default.contentsOfDirectory(at: rootPath, includingPropertiesForKeys: nil)
+            let configFiles = try FileManager.default.contentsOfDirectory(at: rootPath, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
             for configFile in configFiles {
                 guard let configData = try? Data(contentsOf: configFile) else {
                     assertionFailure("can't read file")
                     continue
                 }
-                guard let jsonDict = try? JSONSerialization.jsonObject(with: configData, options: .mutableLeaves) as? [String: Any] else { return }
-                guard let config = jsonDict else {
-                    continue
-                }
-                guard checkConfigFileIsVaild(config: config) else { continue }
-                if let mock = ResponseMock(JSON: config) {
-                    mocks.append(mock)
+                do {
+                    let jsonDict = try JSONSerialization.jsonObject(with: configData, options: []) as? [String: Any]
+                    guard let config = jsonDict else {
+                        continue
+                    }
+                    guard checkConfigFileIsVaild(config: config) else { continue }
+                    if let mock = ResponseMock(JSON: config) {
+                        mocks.append(mock)
+                    }
+                } catch {
+                    assertionFailure(error.localizedDescription)
                 }
             }
         } catch {
@@ -59,5 +63,9 @@ public struct ResponseMockManager {
             return false
         }
         return true
+    }
+    
+    static func isMockFor(url: URL) -> ResponseMock? {
+        return mocks.first(where: { $0.isMatch(url) })
     }
 }
