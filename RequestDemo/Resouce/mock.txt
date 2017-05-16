@@ -1,0 +1,19 @@
+[
+{
+	"enable": false,
+	"url":"https://api.douban.com/v2/music/*/tags",
+	"response":{"tags":[{"title":"from"},{"title":"response"},{"title":"mock"}]}
+},
+{
+	"url":"http://api.douban.com/v2/music/search?q=YUI",
+	"method":"GET",
+	"response":
+		{"musics":
+		[{"title":"mock"},{"title":"mockMinor"}
+		]}
+},
+{"enable": true,
+"url":"http://api.douban.com/v2/music/26753594",
+"response":{"rating":{"max":10,"average":"8.5","numRaters":6511,"min":0},"author":[{"name":"草東沒有派對"}],"alt_title":"","image":"https://img1.doubanio.com\/spic\/s28541447.jpg","title":"醜奴兒-hoho","mobile_link":"https:\/\/m.douban.com\/music\/subject\/26753594\/","summary":"xxxx草東沒有派對 \/ 专辑 \/ 2016-04-30 \/ StreetVoice 街聲 \/ CD","attrs":{"publisher":["StreetVoice 街聲"],"singer":["草東沒有派對"],"version":["专辑"],"pubdate":["2016-04-30"],"title":["醜奴兒"],"media":["CD"],"radio_url":"https:\/\/douban.fm\/?context=channel:0|subject_id:26753594","tracks":["1.Intro\n2.醜\n3.爛泥\n4.勇敢的人\n5.大風吹\n6.艾瑪\n7.等\n8.鬼\n9.在\n10.山海\n11.我們\n12.情歌"],"discs":["1"],"songs":[{"index":1,"name":"track","title":"Intro"},{"index":2,"name":"track","title":"醜"},{"index":3,"name":"track","title":"爛泥"},{"index":4,"name":"track","title":"勇敢的人"},{"index":5,"name":"track","title":"大風吹"},{"index":6,"name":"track","title":"艾瑪"},{"index":7,"name":"track","title":"等"},{"index":8,"name":"track","title":"鬼"},{"index":9,"name":"track","title":"在 "},{"index":10,"name":"track","title":"山海"},{"index":11,"name":"track","title":"我們"},{"index":12,"name":"track","title":"情歌"}]},"alt":"https:\/\/music.douban.com\/subject\/26753594\/","id":"26753594","tags":[{"count":930,"name":"台湾"},{"count":681,"name":"草東沒有派對"},{"count":442,"name":"摇滚"},{"count":433,"name":"2016"},{"count":431,"name":"Indie-Rock"},{"count":410,"name":"独立音乐"},{"count":390,"name":"草东没有派对"},{"count":295,"name":"Indie"}]},
+"delay":0.5}
+]
