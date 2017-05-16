@@ -23,10 +23,11 @@ class MusicDetailViewController: UIViewController {
         let task = URLSession.shared.dataTask(with: URL(string: uri)!, completionHandler: {[unowned self] (data,response,error) in
             guard let data = data else { return }
             let responseDict = try! JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as! [String: Any]
-            self.lbID.text = responseDict["id"] as? String
-            self.lbTitle.text = responseDict["title"] as? String
-            self.lbSinger.text = responseDict["summary"] as? String
-            print(responseDict)
+            DispatchQueue.main.async {
+                self.lbID.text = responseDict["id"] as? String
+                self.lbTitle.text = responseDict["title"] as? String
+                self.lbSinger.text = responseDict["summary"] as? String
+            }
         })
         task.resume()
     }

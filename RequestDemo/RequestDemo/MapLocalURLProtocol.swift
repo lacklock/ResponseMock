@@ -36,8 +36,15 @@ class MapLocalURLProtocol: URLProtocol {
         guard let jsonData = try? JSONSerialization.data(withJSONObject: response) else {
             return
         }
-        client?.urlProtocol(self, didLoad: jsonData)
-        client?.urlProtocolDidFinishLoading(self)
+        if let delay = mock.delay {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay, execute: {
+                self.client?.urlProtocol(self, didLoad: jsonData)
+                self.client?.urlProtocolDidFinishLoading(self)
+            })
+        }else {
+            client?.urlProtocol(self, didLoad: jsonData)
+            client?.urlProtocolDidFinishLoading(self)
+        }
     }
     
     override func stopLoading() {
