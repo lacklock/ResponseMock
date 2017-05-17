@@ -1,5 +1,17 @@
 [
 {
+	"url":"https://zhuo.io/login",
+	"method":"POST",
+	"content-type":"plain",
+	"response":"login success",
+	"headers":{"myheader":"zhuo"},
+	"statusCode":140
+},
+{
+	"url":"https://img3.doubanio.com/lpic/s29308930.jpg",
+	"resource":"wechat.jpg"
+},
+{
 	"enable": false,
 	"url":"https://api.douban.com/v2/music/*/tags",
 	"response":{"tags":[{"title":"from"},{"title":"response"},{"title":"mock"}]}

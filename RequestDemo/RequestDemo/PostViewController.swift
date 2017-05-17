@@ -26,6 +26,9 @@ class PostViewController: UIViewController {
         request.httpBody = args.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
+            if let httpResponse = response as? HTTPURLResponse {
+                print(httpResponse.allHeaderFields)
+            }
             let responseString = String(data: data, encoding: .utf8)
             DispatchQueue.main.async {
                 self.lbResult.text = responseString
