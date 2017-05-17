@@ -32,10 +32,19 @@ class MapLocalURLProtocol: URLProtocol {
         }
         var responseData: Data!
         if let response = mock.response {
-            guard let jsonData = try? JSONSerialization.data(withJSONObject: response) else {
-                return
+            switch mock.contentType {
+            case .json:
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: response) else {
+                    return
+                }
+                responseData = jsonData
+            case .plain:
+                guard let stringResonse = response as? String else {
+                    return
+                }
+                responseData = stringResonse.data(using: .utf8)
             }
-            responseData = jsonData
+            
         }else if let resource = mock.resource {
             let sourceURL = ResponseMockManager.resoureDirectory.appendingPathComponent(resource)
             do {

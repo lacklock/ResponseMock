@@ -26,6 +26,7 @@ struct ResponseMock: Mappable {
     var delay: Double?
     var headers: [String: Any]?
     var method: HTTPMethod = .get
+    var contentType: ContentType = .json
     var resource: String?
     
     init?(map: Map){
@@ -43,6 +44,7 @@ struct ResponseMock: Mappable {
         headers <- map["headers"]
         method <- map["method"]
         resource <- map["resource"]
+        contentType <- map["content-type"]
     }
 }
 
@@ -121,4 +123,9 @@ enum HTTPMethod: String {
     case delete  = "DELETE"
     case trace   = "TRACE"
     case connect = "CONNECT"
+}
+
+enum ContentType: String {
+    case json
+    case plain
 }

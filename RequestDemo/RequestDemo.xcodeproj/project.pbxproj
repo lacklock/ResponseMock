@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A0EC2A51ECAE8440042305F /* TagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EC2A41ECAE8440042305F /* TagsViewController.swift */; };
 		3A0EC2A81ECB11270042305F /* ImageDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EC2A71ECB11270042305F /* ImageDataViewController.swift */; };
+		3A0EC2AC1ECC31D50042305F /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EC2AB1ECC31D50042305F /* PostViewController.swift */; };
 		3A5855291EC9569A007F8DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5855281EC9569A007F8DA1 /* AppDelegate.swift */; };
 		3A58552E1EC9569A007F8DA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A58552C1EC9569A007F8DA1 /* Main.storyboard */; };
 		3A5855301EC9569A007F8DA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A58552F1EC9569A007F8DA1 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		1C21CE824B1BA62CCB134BEF /* Pods_RequestDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RequestDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A0EC2A41ECAE8440042305F /* TagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsViewController.swift; sourceTree = "<group>"; };
 		3A0EC2A71ECB11270042305F /* ImageDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDataViewController.swift; sourceTree = "<group>"; };
+		3A0EC2AB1ECC31D50042305F /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		3A5855251EC9569A007F8DA1 /* RequestDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RequestDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A5855281EC9569A007F8DA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A58552D1EC9569A007F8DA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				3AC49C4F1ECAA8BC0084987E /* SearchViewController.swift */,
 				3A0EC2A41ECAE8440042305F /* TagsViewController.swift */,
 				3A0EC2A71ECB11270042305F /* ImageDataViewController.swift */,
+				3A0EC2AB1ECC31D50042305F /* PostViewController.swift */,
 				3A58552C1EC9569A007F8DA1 /* Main.storyboard */,
 				3AC49C491EC9615C0084987E /* MapLocalURLProtocol.swift */,
 				3AC49C4B1EC963590084987E /* ResponseMockManager.swift */,
@@ -237,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A0EC2AC1ECC31D50042305F /* PostViewController.swift in Sources */,
 				3AC49C501ECAA8BC0084987E /* SearchViewController.swift in Sources */,
 				3A5855291EC9569A007F8DA1 /* AppDelegate.swift in Sources */,
 				3AC49C4A1EC9615C0084987E /* MapLocalURLProtocol.swift in Sources */,
