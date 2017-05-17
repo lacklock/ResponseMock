@@ -39,18 +39,20 @@ class MapLocalURLProtocol: URLProtocol {
                 }
                 responseData = jsonData
             case .plain:
-                guard let stringResonse = response as? String else {
+                guard let stringResponse = response as? String else {
                     return
                 }
-                responseData = stringResonse.data(using: .utf8)
-            }
-            
-        }else if let resource = mock.resource {
-            let sourceURL = ResponseMockManager.resoureDirectory.appendingPathComponent(resource)
-            do {
-                responseData = try Data(contentsOf: sourceURL)
-            }catch {
-                assertionFailure("read file failed")
+                responseData = stringResponse.data(using: .utf8)
+            case .file:
+                guard let filePath = response as? String else {
+                    return
+                }
+                let sourceURL = ResponseMockManager.resoureDirectory.appendingPathComponent(filePath)
+                do {
+                    responseData = try Data(contentsOf: sourceURL)
+                }catch {
+                    assertionFailure("read file failed")
+                }
             }
         }else {
             assertionFailure("haven't specify response content")

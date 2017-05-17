@@ -130,4 +130,5 @@ enum HTTPMethod: String {
 enum ContentType: String {
     case json
     case plain
+    case file
 }
