@@ -30,19 +30,29 @@ class MapLocalURLProtocol: URLProtocol {
         guard let mock = ResponseMockManager.isMockFor(request: request) else {
             return
         }
-        guard let response = mock.response  else {
-            return
-        }
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: response) else {
+        var responseData: Data!
+        if let response = mock.response {
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: response) else {
+                return
+            }
+            responseData = jsonData
+        }else if let resource = mock.resource {
+            let sourceURL = ResponseMockManager.resoureDirectory.appendingPathComponent(resource)
+            do {
+               responseData = try Data(contentsOf: sourceURL)
+            }catch {
+                assertionFailure("read file failed")
+            }
+        }else {
             return
         }
         if let delay = mock.delay {
             DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + delay, execute: {
-                self.client?.urlProtocol(self, didLoad: jsonData)
+                self.client?.urlProtocol(self, didLoad: responseData)
                 self.client?.urlProtocolDidFinishLoading(self)
             })
         }else {
-            client?.urlProtocol(self, didLoad: jsonData)
+            client?.urlProtocol(self, didLoad: responseData)
             client?.urlProtocolDidFinishLoading(self)
         }
     }

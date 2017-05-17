@@ -26,6 +26,7 @@ struct ResponseMock: Mappable {
     var delay: Double?
     var headers: [String: Any]?
     var method: HTTPMethod = .get
+    var resource: String?
     
     init?(map: Map){
         let urlString = map.JSON["url"] as! String
@@ -41,6 +42,7 @@ struct ResponseMock: Mappable {
         delay <- map["delay"]
         headers <- map["headers"]
         method <- map["method"]
+        resource <- map["resource"]
     }
 }
 

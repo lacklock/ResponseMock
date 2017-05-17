@@ -32,7 +32,7 @@ public class ResponseMockManager {
     public static var loadMockFilesEachRequest = false
     
     public static var rootPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("mock", isDirectory: true)
-    static var resoureDirectory = rootPath.appendingPathComponent("mock", isDirectory: true)
+    static var resoureDirectory = rootPath.appendingPathComponent("resource", isDirectory: true)
     
     static var mocks = [ResponseMock]()
     
@@ -41,6 +41,16 @@ public class ResponseMockManager {
             mocks.removeAll()
             let configFiles = try FileManager.default.contentsOfDirectory(at: rootPath, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
             for configFile in configFiles {
+                if #available(iOS 9.0, *) {
+                    guard configFile.hasDirectoryPath == false else {
+                        return
+                    }
+                } else {
+                   let isDirectory = (try? configFile.resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory ?? false
+                    guard isDirectory == false else {
+                        return
+                    }
+                }
                 guard let configData = try? Data(contentsOf: configFile) else {
                     assertionFailure("can't read file")
                     continue
@@ -70,8 +80,10 @@ public class ResponseMockManager {
         if config["enable"] as? Bool == false {
             return false
         }
-        guard config.keys.contains("url"),
-            config.keys.contains("response") else {
+        guard config.keys.contains("url")else {
+            return false
+        }
+        guard config.keys.contains("response")||config.keys.contains("resource") else {
             return false
         }
         return true
