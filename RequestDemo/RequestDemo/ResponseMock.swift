@@ -24,10 +24,11 @@ struct ResponseMock: Mappable {
     var isWildcard = false
     var response: Any?
     var delay: Double?
-    var headers: [String: Any]?
+    var headers: [String: String]?
     var method: HTTPMethod = .get
     var contentType: ContentType = .json
     var resource: String?
+    var statusCode = 200
     
     init?(map: Map){
         let urlString = map.JSON["url"] as! String
@@ -45,6 +46,7 @@ struct ResponseMock: Mappable {
         method <- map["method"]
         resource <- map["resource"]
         contentType <- map["content-type"]
+        statusCode <- map["statusCode"]
     }
 }
 

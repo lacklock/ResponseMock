@@ -9,7 +9,7 @@
 import UIKit
 
 class MapLocalURLProtocol: URLProtocol {
-
+    
     override class func canInit(with request: URLRequest) -> Bool {
         if request.url != nil {
             if ResponseMockManager.loadMockFilesEachRequest {
@@ -25,7 +25,7 @@ class MapLocalURLProtocol: URLProtocol {
     override class func canonicalRequest(for request: URLRequest) -> URLRequest {
         return request
     }
-        
+    
     override func startLoading() {
         guard let mock = ResponseMockManager.isMockFor(request: request) else {
             return
@@ -48,23 +48,31 @@ class MapLocalURLProtocol: URLProtocol {
         }else if let resource = mock.resource {
             let sourceURL = ResponseMockManager.resoureDirectory.appendingPathComponent(resource)
             do {
-               responseData = try Data(contentsOf: sourceURL)
+                responseData = try Data(contentsOf: sourceURL)
             }catch {
                 assertionFailure("read file failed")
             }
         }else {
+            assertionFailure("haven't specify response content")
             return
         }
-        if let delay = mock.delay {
-            DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + delay, execute: {
-                self.client?.urlProtocol(self, didLoad: responseData)
-                self.client?.urlProtocolDidFinishLoading(self)
-            })
-        }else {
+        
+        func response() {
+            let urlResponse = HTTPURLResponse(url: request.url!, statusCode: mock.statusCode, httpVersion: nil, headerFields: mock.headers)
+            client?.urlProtocol(self, didReceive: urlResponse!, cacheStoragePolicy: .notAllowed)
             client?.urlProtocol(self, didLoad: responseData)
             client?.urlProtocolDidFinishLoading(self)
         }
+        
+        if let delay = mock.delay {
+            DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + delay, execute: {
+                response()
+            })
+        }else {
+            response()
+        }
     }
+    
     
     override func stopLoading() {
     }
