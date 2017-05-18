@@ -9,7 +9,8 @@
 },
 {
 	"url":"https://img3.doubanio.com/lpic/s29308930.jpg",
-	"resource":"wechat.jpg"
+	"content-type":"file",
+	"response":"wechat.jpg"
 },
 {
 	"enable": false,
