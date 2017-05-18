@@ -15,9 +15,6 @@
 		3A5855301EC9569A007F8DA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A58552F1EC9569A007F8DA1 /* Assets.xcassets */; };
 		3A5855331EC9569A007F8DA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A5855311EC9569A007F8DA1 /* LaunchScreen.storyboard */; };
 		3A58553B1EC957AE007F8DA1 /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A58553A1EC957AE007F8DA1 /* MusicDetailViewController.swift */; };
-		3AC49C4A1EC9615C0084987E /* MapLocalURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC49C491EC9615C0084987E /* MapLocalURLProtocol.swift */; };
-		3AC49C4C1EC963590084987E /* ResponseMockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC49C4B1EC963590084987E /* ResponseMockManager.swift */; };
-		3AC49C4E1EC99CC90084987E /* ResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC49C4D1EC99CC90084987E /* ResponseMock.swift */; };
 		3AC49C501ECAA8BC0084987E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC49C4F1ECAA8BC0084987E /* SearchViewController.swift */; };
 		EF725031EB0D86AE19C4A185 /* Pods_RequestDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C21CE824B1BA62CCB134BEF /* Pods_RequestDemo.framework */; };
 /* End PBXBuildFile section */
@@ -35,9 +32,6 @@
 		3A5855321EC9569A007F8DA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A5855341EC9569A007F8DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A58553A1EC957AE007F8DA1 /* MusicDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicDetailViewController.swift; sourceTree = "<group>"; };
-		3AC49C491EC9615C0084987E /* MapLocalURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocalURLProtocol.swift; sourceTree = "<group>"; };
-		3AC49C4B1EC963590084987E /* ResponseMockManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseMockManager.swift; sourceTree = "<group>"; };
-		3AC49C4D1EC99CC90084987E /* ResponseMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseMock.swift; sourceTree = "<group>"; };
 		3AC49C4F1ECAA8BC0084987E /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4ECB60CB00FAFECA1613103C /* Pods-RequestDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RequestDemo/Pods-RequestDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,9 +84,6 @@
 				3A0EC2A71ECB11270042305F /* ImageDataViewController.swift */,
 				3A0EC2AB1ECC31D50042305F /* PostViewController.swift */,
 				3A58552C1EC9569A007F8DA1 /* Main.storyboard */,
-				3AC49C491EC9615C0084987E /* MapLocalURLProtocol.swift */,
-				3AC49C4B1EC963590084987E /* ResponseMockManager.swift */,
-				3AC49C4D1EC99CC90084987E /* ResponseMock.swift */,
 			);
 			path = RequestDemo;
 			sourceTree = "<group>";
@@ -243,12 +234,9 @@
 				3A0EC2AC1ECC31D50042305F /* PostViewController.swift in Sources */,
 				3AC49C501ECAA8BC0084987E /* SearchViewController.swift in Sources */,
 				3A5855291EC9569A007F8DA1 /* AppDelegate.swift in Sources */,
-				3AC49C4A1EC9615C0084987E /* MapLocalURLProtocol.swift in Sources */,
 				3A58553B1EC957AE007F8DA1 /* MusicDetailViewController.swift in Sources */,
 				3A0EC2A81ECB11270042305F /* ImageDataViewController.swift in Sources */,
 				3A0EC2A51ECAE8440042305F /* TagsViewController.swift in Sources */,
-				3AC49C4E1EC99CC90084987E /* ResponseMock.swift in Sources */,
-				3AC49C4C1EC963590084987E /* ResponseMockManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

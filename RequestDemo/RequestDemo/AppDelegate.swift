@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ResponseMock
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
